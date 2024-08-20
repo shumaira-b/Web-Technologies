@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Person</title>
+    <style>
+        .profile {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 300px;
+            margin: 20px auto;
+            background-color: #f9f9f9;
+        }
+
+        .profile h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .profile p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .profile[data-role="scientist"] {
+            border-left: 5px solid blue;
+        }
+
+        .profile[data-role="philosopher"] {
+            border-left: 5px solid green;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">User Defined Attributes</h1>
+    <div class="profile" data-id="001" data-role="scientist">
+        <h3>ANGELINA</h3>
+        <p><strong>Field:</strong> Physics, Chemistry</p>
+        <p><strong>Known for:</strong> Research on radioactivity, Nobel Prize winner</p>
+        <p><strong>Nationality:</strong> Polish, French</p>
+    </div>
+
+    <div class="profile" data-id="002" data-role="philosopher">
+        <h3>ARIANA</h3>
+        <p><strong>Field:</strong> Philosophy</p>
+        <p><strong>Known for:</strong> Socratic method, ethics</p>
+        <p><strong>Nationality:</strong> Greek</p>
+    </div>
+
+</body>
+</html>

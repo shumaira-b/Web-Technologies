@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my First</title>
+    <style>
+        h1{
+            text-align: center;
+            background-color: cadetblue;
+        }
+        form{
+            text-align: center;
+            justify-content:left;
+        }
+        legend{
+            background-color: rgb(235, 150, 150);
+        }
+        fieldset{
+            margin-left: 400px;
+            margin-right: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form >
+        <fieldset>
+            <legend> Student Details</legend>
+        <label for="fname">Name</label>
+        <input type="fname" name="fname" id="fname"><br>
+        password <input type="password" min="5" max="15"> <br>
+        email <input type="email" required placeholder="example@gmail.com" name="" id=""> <br>
+        <label for=""> Branch</label> 
+        <input type="text" list="types of branches"> <br>
+        <datalist id="types of branches">
+            <option value="CSE"></option>
+            <option value="ECE"></option>
+            <option value="civil"></option>
+            <option value="Mech"></option>
+            <option value="Elec"></option>
+        </datalist>
+        <label for="date">Date of birth</label> 
+        <input type="date" name="" id=""> <br>
+        <label for=""> phone number</label> 
+        <input type="number" name="" id=""> <br> <br>
+        <input type="submit"> 
+        <input type="reset">
+        <button type="button" onclick="alert('welcome')"> OK</button>
+        </fieldset>
+    </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration platform</title>
+</head>
+<body>
+    <h1>Registration form</h1>
+    <form onsubmit="saveData()">
+        <label for="Username">Username</label> 
+        <input type="text" name="Username" id="Username"> <br> 
+        <label for="Mobile Number">Mobile Number</label>
+        <input type="tel" name="Mobile Number" id="Mobile Number"> <br>
+        <input type="submit"> 
+        <input type="reset">
+    </form>
+    <script>
+        function saveData() {
+            localStorage.setItem("Username", document.getElementById("Username").value);
+            localStorage.setItem("Mobile Number", document.getElementById("Mobile Number").value);
+        }
+
+        function retrieveData() {
+            document.getElementById("Username").value = localStorage.getItem("Username") ;
+            document.getElementById("Mobile Number").value = localStorage.getItem("Mobile Number") ;
+        }
+        
+        retrieveData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobConnect - Job Seeker Registration</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ddcece;
+            margin: 0;
+            padding: 20px;
+            color: #3f3b3f;
+        }
+        .container {
+            background-color: #e8dddd;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        form {
+            display: grid;
+            gap: 20px;
+        }
+        .form-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-section h2 {
+            margin-top: 0;
+            color: #6665b0;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .add-more {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .add-more:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JobConnect Registration</h1>
+        <form id="jobSeekerForm" onsubmit="return validateForm()">
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                <div>
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div>
+                    <label for="location">Current Location:</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Education</h2>
+                <div id="educationFields">
+                    <div class="education-entry">
+                        <label for="degree">Degree:</label>
+                        <input type="text" name="degree[]" required>
+                        <label for="institution">Institution:</label>
+                        <input type="text" name="institution[]" required>
+                        <label for="graduationYear">Graduation Year:</label>
+                        <input type="number" name="graduationYear[]" min="1950" max="2030" required>
+                    </div>
+                </div>
+                <button type="button" class="add-more" onclick="addEducationField()">Add More Education</button>
+            </div>
+
+            <div class="form-section">
+                <h2>Work Experience</h2>
+                <div id="experienceFields">
+                    <div class="experience-entry">
+                        <label for="jobTitle">Job Title:</label>
+                        <input type="text" name="jobTitle[]" required>
+                        <label for="company">Company:</label>
+                        <input type="text" name="company[]" required>
+                        <label for="workDuration">Duration (in years):</label>
+                        <input type="number" name="workDuration[]" min="0" step="0.1" required>
+                    </div>
+                </div>
+                <button type="button" class="add-more" onclick="addExperienceField()">Add More Experience</button>
+            </div>
+
+            <div class="form-section">
+                <h2>Skills</h2>
+                <div>
+                    <label for="skills">Skills (comma-separated):</label>
+                    <input type="text" id="skills" name="skills" placeholder="e.g., Java, Python, Project Management" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Additional Information</h2>
+                <div>
+                    <label for="resumeUpload">Upload Resume:</label>
+                    <input type="file" id="resumeUpload" name="resumeUpload" accept=".pdf,.doc,.docx" required>
+                </div>
+                <div>
+                    <label for="linkedinProfile">LinkedIn Profile URL:</label>
+                    <input type="url" id="linkedinProfile" name="linkedinProfile">
+                </div>
+                <div>
+                    <label for="expectedSalary">Expected Annual Salary (in INR):</label>
+                    <input type="number" id="expectedSalary" name="expectedSalary" min="0" step="10000">
+                </div>
+            </div>
+
+            <div>
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Add any additional validation logic here
+            return true;
+        }
+
+        function addEducationField() {
+            const educationFields = document.getElementById('educationFields');
+            const newField = document.createElement('div');
+            newField.className = 'education-entry';
+            newField.innerHTML = `
+                <label for="degree">Degree:</label>
+                <input type="text" name="degree[]" required>
+                <label for="institution">Institution:</label>
+                <input type="text" name="institution[]" required>
+                <label for="graduationYear">Graduation Year:</label>
+                <input type="number" name="graduationYear[]" min="1950" max="2030" required>
+            `;
+            educationFields.appendChild(newField);
+        }
+
+        function addExperienceField() {
+            const experienceFields = document.getElementById('experienceFields');
+            const newField = document.createElement('div');
+            newField.className = 'experience-entry';
+            newField.innerHTML = `
+                <label for="jobTitle">Job Title:</label>
+                <input type="text" name="jobTitle[]" required>
+                <label for="company">Company:</label>
+                <input type="text" name="company[]" required>
+                <label for="workDuration">Duration (in years):</label>
+                <input type="number" name="workDuration[]" min="0" step="0.1" required>
+            `;
+            experienceFields.appendChild(newField);
+        }
+    </script>
+</body>
+</html>
